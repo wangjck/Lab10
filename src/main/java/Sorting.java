@@ -32,7 +32,25 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] bubbleSort(final int[] array) {
-        return null;
+        boolean c = false;
+       while (!c) {
+            for (int i = 1; i < array.length; i++) {
+                if (array[i] < array[i - 1]) {
+                    int temp = array[i];
+                    array[i] = array[i - 1];
+                    array[i - 1] = temp;
+                }
+            }
+            c = true;
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i + 1]) {
+                    c = false;
+                    break;
+                }
+            }
+        }
+        return array;
+
     }
 
     /**
@@ -43,7 +61,24 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] selectionSort(final int[] array) {
-        return null;
+        int low = array[0];
+        int lowpos = 0;
+        int temp = 0;
+        for (int idx = 0; idx < array.length - 1; idx++) {
+            low = array[idx];
+            lowpos = idx;
+            temp = 0;
+            for (int i = idx; i < array.length; i++) {
+                if (array[i] < low) {
+                    low = array[i];
+                    lowpos = i;
+                }
+            }
+            temp = array[idx];
+            array[idx] = array[lowpos];
+            array[lowpos] = temp;
+        }
+        return array;
     }
 
     /**
@@ -54,7 +89,28 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] mergeSort(final int[] array) {
+        if (array.length == 1) { return array; }
+        int pivot = array[0];
+        int partition = 0;
+        int below = 0;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < pivot) {
+                below++;
+            }
+        }
+        int[] a1 = new int[below];
+        int i1 = 0;
+        int[] a2 = new int[array.length - 1 - below];
+        int i2 = 0;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < pivot) {
+                a1[i1] = array[i];
+            } else {
+                a2[i1] = array[i];
+            }
+        }
         return null;
+
     }
 
     /**
